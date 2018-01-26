@@ -1,0 +1,15 @@
+;Kelvin Mei (kelvin@brandeis.edu) 2015-01-29
+
+;given usable methods
+(define (double a)
+  (+ a a))
+(define (halve b)
+  (/ b 2))
+;doubles a if b is even and halves b
+;increments answer by a and decrement b by 1 if b is odd
+(define (log a b)
+  (if (= b 0)
+      0
+      (if (= (modulo b 2) 0)
+          (log (double a)(halve b))
+          (+ a (log a (- b 1))))))

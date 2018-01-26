@@ -1,0 +1,17 @@
+;Kelvin Mei (kelvin@brandeis.edu) 2016-02-20
+(define nil (list))
+
+(define (atom? x) (not (or (pair? x) (null? x))))
+
+(define (deep-reverse items)
+  (define (iter things answer)
+    (if (null? things)
+        answer
+        (if (atom? (car things))
+            (iter (cdr things) 
+                  (cons (car things)
+                        answer))
+            (iter (cdr things)
+                  (cons (deep-reverse (car things))
+                        answer)))))
+  (iter items nil))
